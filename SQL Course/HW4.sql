@@ -27,3 +27,6 @@ WHERE country LIKE '_____' ;
 
 SELECT COUNT(*) FROM city
 WHERE city ILIKE '%R' ;
+
+
+
