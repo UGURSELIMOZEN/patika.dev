@@ -29,10 +29,11 @@ AND replacement_cost = (SELECT MIN(replacement_cost) FROM film) ;
 
 
 
-SELECT first_name , last_name , amount AS Maximum_Shopping FROM customer
+SELECT first_name , last_name , SUM(amount) AS Maximum_Shopping FROM customer
 INNER JOIN payment ON customer.customer_id = payment.customer_id
-WHERE payment.amount = (SELECT MAX(payment.amount) FROM payment)
-ORDER BY customer.first_name;
+GROUP BY payment.customer_id , customer.first_name ,customer.last_name
+ORDER BY SUM(amount) DESC
+LIMIT 10 ;
 
 
 
